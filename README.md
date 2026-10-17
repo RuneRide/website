@@ -11,6 +11,7 @@ Site statique bilingue (français, anglais) de [runeride.fr](https://runeride.fr
 | `/mentions-legales/`, `/confidentialite/`, `/cgv/` | Documents légaux (français uniquement, **brouillons**, `noindex`) |
 | `/en/legal/` | Page d'orientation vers les documents légaux français |
 | `assets/` | CSS (tokens de la charte), polices locales, logos, motifs, icônes, image de partage |
+| `.github/workflows/deploy.yml`, `tools/ftp-setup.sh` | Déploiement continu par FTPS vers o2switch et création du compte FTP |
 | `.htaccess` | Configuration Apache pour o2switch : HTTPS, sans `www`, en-têtes de sécurité (CSP stricte), cache |
 
 Les pages sont du HTML écrit à la main : aucun style ni script en ligne (la CSP les interdit). Pour modifier un texte, éditer le fichier concerné, dans les deux langues.
@@ -21,9 +22,19 @@ Les pages sont du HTML écrit à la main : aucun style ni script en ligne (la CS
 python3 -m http.server 8000   # puis http://localhost:8000/
 ```
 
-## Déployer sur o2switch
+## Déployer sur o2switch (intégration continue)
 
-Copier le contenu de ce dépôt (hors `.git`) à la racine web de `runeride.fr`. Le `.htaccess` fourni remplace celui de la racine : ne pas le déployer sur une racine qui porte aussi l'API PHP.
+Chaque push sur `main` synchronise le site vers o2switch par FTPS (workflow `.github/workflows/deploy.yml`, action `FTP-Deploy-Action`). Le compte FTP, nommé `deploy-vitrine@runeride.fr`, est enfermé dans le dossier `~/vitrine` de l'espace cPanel et **pas** dans la racine web de `runeride.fr` : le déploiement ne remplace rien tant que le domaine ne pointe pas vers ce dossier (cPanel, « Domaines »).
+
+Mise en place, une seule fois (le jeton cPanel et le mot de passe FTP ne sont jamais affichés) :
+
+```sh
+AWS_PROFILE=bike360 tools/ftp-setup.sh           # simulation
+AWS_PROFILE=bike360 tools/ftp-setup.sh --apply   # crée le compte, teste la connexion, pose les secrets GitHub
+gh workflow run deploy.yml --repo RuneRide/website
+```
+
+Sans les secrets `FTP_SERVER`, `FTP_USERNAME` et `FTP_PASSWORD`, le workflow ne déploie rien et le signale par un avertissement. Le `.htaccess` fourni n'est à utiliser que sur une racine qui ne porte pas aussi l'API PHP.
 
 ## Licences et usage de l'IA
 

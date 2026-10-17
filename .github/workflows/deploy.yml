@@ -1,0 +1,47 @@
+# SPDX-License-Identifier: EUPL-1.2
+# Synchronise le site vers o2switch par FTPS à chaque push sur main (ou à la demande).
+# Secrets du dépôt, créés par tools/ftp-setup.sh : FTP_SERVER, FTP_USERNAME, FTP_PASSWORD.
+name: Déploiement o2switch
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['README.md', 'NOTICE.md', 'LICENSES/**', '.gitignore', 'tools/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-o2switch
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      HAS_FTP: ${{ secrets.FTP_PASSWORD != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Secrets FTP absents
+        if: env.HAS_FTP != 'true'
+        run: echo "::warning::Secrets FTP_SERVER, FTP_USERNAME et FTP_PASSWORD absents : lancer tools/ftp-setup.sh. Rien n'a été déployé."
+      - name: Synchroniser par FTPS
+        if: env.HAS_FTP == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          server-dir: ./
+          local-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            tools/**
+            README.md
+            NOTICE.md
+            LICENSES/**

@@ -25,7 +25,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Secrets FTP absents
         if: env.HAS_FTP != 'true'
-        run: echo "::warning::Secrets FTP_SERVER, FTP_USERNAME et FTP_PASSWORD absents : lancer tools/ftp-setup.sh. Rien n'a été déployé."
+        run: |
+          echo "::warning::Secrets FTP_SERVER, FTP_USERNAME et FTP_PASSWORD absents. Lancer tools/ftp-setup.sh. Rien n'a été déployé."
       - name: Synchroniser par FTPS
         if: env.HAS_FTP == 'true'
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5

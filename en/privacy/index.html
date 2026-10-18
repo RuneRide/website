@@ -34,7 +34,7 @@
 <main id="contenu">
 <div class="wrap legal">
 <h1>Privacy policy</h1>
-<p class="muted">Version of 17 October 2026. This is a courtesy translation; the <a href="/confidentialite/" hreflang="fr" lang="fr">French version</a> prevails.</p>
+<p class="muted">Version of 18 October 2026. This is a courtesy translation; the <a href="/confidentialite/" hreflang="fr" lang="fr">French version</a> prevails.</p>
 <p>This policy describes the personal data that RuneRide (the runeride.fr website and the app.runeride.fr application) collects, why, who it is shared with, how long it is kept and how to exercise your rights. It applies to anyone who creates an account or uses the service, including through "Sign in with Google".</p>
 <h2>Data controller</h2>
 <p>Philippe Vienne, sole proprietor, see the <a href="/mentions-legales/" hreflang="fr" lang="fr">legal notice</a> (French). Contact for any question or to exercise your rights: <a href="mailto:contact@runeride.fr">contact@runeride.fr</a>.</p>
@@ -43,7 +43,8 @@
 <tr><th>Data</th><th>Why</th><th>Legal basis</th></tr>
 <tr><td>Email address, password (stored in protected form)</td><td>Create the account and sign in, send service emails</td><td>Performance of the contract</td></tr>
 <tr><td>Uploaded videos, with their telemetry (camera, motion, date and time)</td><td>Storage, analysis, editing and export requested by the customer</td><td>Performance of the contract</td></tr>
-<tr><td>Uploaded GPS tracks, GeoRide positions if the customer links their account, position sent to look for a petrol station</td><td>Route, speed and highlights shown to the customer</td><td>Performance of the contract</td></tr>
+<tr><td>Uploaded GPS tracks, position sent to look for a petrol station</td><td>Route, speed and highlights shown to the customer</td><td>Performance of the contract</td></tr>
+<tr><td>If the customer links their GeoRide account: GeoRide email address, GeoRide access token (encrypted), imported bikes and trips (dates, distances, GPS tracks)</td><td>Import and display the customer's trips. The GeoRide password is used only when linking and is not kept</td><td>Performance of the contract</td></tr>
 <tr><td>Plan, dates, payment history, customer identifiers at Mollie</td><td>Billing, subscription follow-up, accounting obligations</td><td>Performance of the contract, legal obligation</td></tr>
 <tr><td>Technical logs (IP address, date, request)</td><td>Security and diagnostics</td><td>Legitimate interest</td></tr>
 </table></div>
@@ -55,6 +56,7 @@ RuneRide does not look at customers' content, except at their request for suppor
 <li>o2switch: hosting of the site, the application and the accounts database (France). Amazon Web Services EMEA SARL: storage of videos for the 360° workshop service (in preparation), in the Stockholm region (Sweden). Data stays within the European Union; AWS acts as a processor under the GDPR, under its data processing agreement.</li>
 <li>Google Ireland Limited: only if you choose to sign in with Google (see the section below). RuneRide sends no data to Google; it only receives the Google account information described below.</li>
 <li>Mollie B.V. (Netherlands): payment. Mollie receives the customer's email address and payment method data, which RuneRide does not see.</li>
+<li>GeoRide (Kible SAS): if you link your account, RuneRide signs in to GeoRide's API with your credentials when linking, then with an access token, to retrieve your own trips. RuneRide sends no other data to GeoRide.</li>
 </ul>
 <h2>Sign in with Google</h2>
 <p>You can create an account or sign in with your Google account instead of a password. In that case, RuneRide asks Google only for the following information (OAuth scopes <code>openid</code> and <code>email</code>):</p>
@@ -73,6 +75,7 @@ RuneRide does not look at customers' content, except at their request for suppor
 <li>After a subscription: 30 days of access, then 180 days in archive, then deletion.</li>
 <li>Exports: 30 days. Trash: 30 days.</li>
 <li>Account deleted by the customer: files, indexes and account erased immediately.</li>
+<li>GeoRide link: the token is erased when you unlink GeoRide or delete your account. Without a sync for 30 days it expires and the account must be linked again.</li>
 <li>Accounting records (payments, receipts): 10 years, in line with French accounting obligations.</li>
 <li>Technical logs: 6 months.</li>
 </ul>
@@ -80,7 +83,7 @@ RuneRide does not look at customers' content, except at their request for suppor
 <p>You have the rights of access, rectification, erasure, restriction, objection and portability. You can delete your account from the "Mon palier" page.
 For anything else, write to <a href="mailto:contact@runeride.fr">contact@runeride.fr</a>. You may lodge a complaint with the CNIL (www.cnil.fr).</p>
 <h2>Security</h2>
-<p>Traffic is encrypted (HTTPS). Each customer's files are separated by account, and storage access goes through time-limited signed URLs. Passwords are never stored in clear text. Administrative access to the servers is limited to the publisher.</p>
+<p>Traffic is encrypted (HTTPS). Each customer's files are separated by account, and storage access goes through time-limited signed URLs. Passwords are never stored in clear text. The GeoRide access token is encrypted at rest. Administrative access to the servers is limited to the publisher.</p>
 </div>
 </main>
 <footer><div class="wrap">

@@ -34,7 +34,7 @@
 <main id="contenu">
 <div class="wrap legal">
 <h1>Privacy policy</h1>
-<p class="muted">Version of 18 October 2026. This is a courtesy translation; the <a href="/confidentialite/" hreflang="fr" lang="fr">French version</a> prevails.</p>
+<p class="muted">Version of 21 October 2026. This is a courtesy translation; the <a href="/confidentialite/" hreflang="fr" lang="fr">French version</a> prevails.</p>
 <p>This policy describes the personal data that RuneRide (the runeride.fr website and the app.runeride.fr application) collects, why, who it is shared with, how long it is kept and how to exercise your rights. It applies to anyone who creates an account or uses the service, including through "Sign in with Google".</p>
 <h2>Data controller</h2>
 <p>Philippe Vienne, sole proprietor, see the <a href="/mentions-legales/" hreflang="fr" lang="fr">legal notice</a> (French). Contact for any question or to exercise your rights: <a href="mailto:contact@runeride.fr">contact@runeride.fr</a>.</p>
@@ -45,6 +45,10 @@
 <tr><td>Uploaded videos, with their telemetry (camera, motion, date and time)</td><td>Storage, analysis, editing and export requested by the customer</td><td>Performance of the contract</td></tr>
 <tr><td>Uploaded GPS tracks, position sent to look for a petrol station</td><td>Route, speed and highlights shown to the customer</td><td>Performance of the contract</td></tr>
 <tr><td>If the customer links their GeoRide account: GeoRide email address, GeoRide access token (encrypted), imported bikes and trips (dates, distances, GPS tracks)</td><td>Import and display the customer's trips. The GeoRide password is used only when linking and is not kept</td><td>Performance of the contract</td></tr>
+<tr><td>"Raido" route planner (in preparation): chosen start and end points, ride settings (character, average speeds, breaks, weather thresholds), computed route</td><td>Compute and display the requested ride. The computation is stateless: the service keeps neither your positions nor your routes</td><td>Performance of the contract</td></tr>
+<tr><td>Saved rides (title, settings, route, distance, duration) and share link</td><td>Find, replay and, if you decide so, share a ride. Anyone with the link sees the title, route, distance and duration, never your account or settings</td><td>Performance of the contract</td></tr>
+<tr><td>Subscribers: roads already ridden, derived from your imported GeoRide trips (tracks matched to the road network)</td><td>"Discovery" mode: suggest roads you have not ridden yet</td><td>Performance of the contract</td></tr>
+<tr><td>Optional consent to anonymous sharing of your trips (see the "Rider score" section)</td><td>Contribute to the "rider" score of roads</td><td>Consent</td></tr>
 <tr><td>Plan, dates, payment history, customer identifiers at Mollie</td><td>Billing, subscription follow-up, accounting obligations</td><td>Performance of the contract, legal obligation</td></tr>
 <tr><td>Technical logs (IP address, date, request)</td><td>Security and diagnostics</td><td>Legitimate interest</td></tr>
 </table></div>
@@ -57,6 +61,7 @@ RuneRide does not look at customers' content, except at their request for suppor
 <li>Google Ireland Limited: only if you choose to sign in with Google (see the section below). RuneRide sends no data to Google; it only receives the Google account information described below.</li>
 <li>Mollie B.V. (Netherlands): payment. Mollie receives the customer's email address and payment method data, which RuneRide does not see.</li>
 <li>GeoRide (Kible SAS): if you link your account, RuneRide signs in to GeoRide's API with your credentials when linking, then with an access token, to retrieve your own trips. RuneRide sends no other data to GeoRide.</li>
+<li>Amazon Web Services EMEA SARL, for the route planner (in preparation): running the computation and storing the road map in the Stockholm region (Sweden); requests go through AWS's CloudFront delivery network, which may relay them through servers located outside the European Union without storing them. The service keeps no position or route; its technical logs contain none.</li>
 </ul>
 <h2>Sign in with Google</h2>
 <p>You can create an account or sign in with your Google account instead of a password. In that case, RuneRide asks Google only for the following information (OAuth scopes <code>openid</code> and <code>email</code>):</p>
@@ -69,6 +74,15 @@ RuneRide does not look at customers' content, except at their request for suppor
 <p><strong>Sharing.</strong> Data received from Google is neither sold nor transferred to third parties, except to the hosting processors listed above, which are needed to run the service, or where the law requires it. No human reads this data, except with your consent for a support request.</p>
 <p><strong>Retention and deletion.</strong> This data is kept as long as your account exists and is erased with it (see "Retention periods"). You can also revoke RuneRide's access at any time at <a href="https://myaccount.google.com/permissions" rel="noopener">myaccount.google.com/permissions</a>, or ask for your data to be erased at <a href="mailto:contact@runeride.fr">contact@runeride.fr</a>.</p>
 <p>RuneRide's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Google API Services User Data Policy</a>, including its Limited Use requirements.</p>
+<h2>"Rider" score (anonymous sharing, optional)</h2>
+<p>On the "Compte" (Account) page, you can agree that your GeoRide trips contribute, <strong>anonymously</strong>, to the "rider" score of roads (the roads riders favour). This option is <strong>off by default</strong>.</p>
+<ul>
+<li>The first and last 500 metres of each trip (your home, your usual places) are removed before any use.</li>
+<li>Trips are counted per road segment, <strong>with no link kept between a segment and your account</strong>.</li>
+<li>A score is published for a département only once a minimum number of riders there have contributed (planned threshold: 5).</li>
+<li>You can withdraw your consent at any time with one click on the "Compte" page: your trips are no longer taken into account at the next recalculation, which runs weekly.</li>
+<li><strong>As of today, this score is not computed</strong>: the option only records your consent and no trip is aggregated. This policy will be updated before it goes live.</li>
+</ul>
 <h2>Retention periods</h2>
 <ul>
 <li>Trial without subscription: files deleted 7 days after the first upload.</li>
@@ -76,6 +90,7 @@ RuneRide does not look at customers' content, except at their request for suppor
 <li>Exports: 30 days. Trash: 30 days.</li>
 <li>Account deleted by the customer: files, indexes and account erased immediately.</li>
 <li>GeoRide link: the token is erased when you unlink GeoRide or delete your account. Without a sync for 30 days it expires and the account must be linked again.</li>
+<li>Saved rides: until you delete them or delete your account. A share link stays valid until you revoke it. Roads already ridden: erased with your imported trips ("Supprimer mes trajets") or with your account.</li>
 <li>Accounting records (payments, receipts): 10 years, in line with French accounting obligations.</li>
 <li>Technical logs: 6 months.</li>
 </ul>

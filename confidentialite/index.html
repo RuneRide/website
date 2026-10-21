@@ -34,7 +34,7 @@
 <main id="contenu">
 <div class="wrap legal">
 <h1>Politique de confidentialité</h1>
-<p class="muted">Version du 18 octobre 2026.</p>
+<p class="muted">Version du 21 octobre 2026.</p>
 <p>Cette politique décrit les données personnelles que RuneRide (le site runeride.fr et l'application app.runeride.fr) collecte, pourquoi, avec qui elles sont partagées, combien de temps elles sont conservées et comment exercer vos droits. Elle s'applique à toute personne qui crée un compte ou utilise le service, y compris par «&nbsp;Se connecter avec Google&nbsp;».</p>
 <h2>Responsable du traitement</h2>
 <p>Philippe Vienne, entrepreneur individuel, voir les <a href="/mentions-legales/">mentions légales</a>. Contact pour toute question ou pour exercer vos droits : <a href="mailto:contact@runeride.fr">contact@runeride.fr</a>.</p>
@@ -45,6 +45,10 @@
 <tr><td>Vidéos envoyées, avec leur télémétrie (caméra, mouvements, date et heure)</td><td>Stockage, analyse, montage et export demandés par le client</td><td>Exécution du contrat</td></tr>
 <tr><td>Traces GPS déposées, position transmise pour chercher une station-service</td><td>Trajet, vitesse et moments forts affichés au client</td><td>Exécution du contrat</td></tr>
 <tr><td>Si le client relie son compte GeoRide : adresse de courriel GeoRide, jeton d'accès GeoRide (chiffré), motos et trajets importés (dates, distances, tracés GPS)</td><td>Importer et afficher les trajets du client. Le mot de passe GeoRide sert uniquement au moment de la liaison et n'est pas conservé</td><td>Exécution du contrat</td></tr>
+<tr><td>Calculateur de balade « Raido » (en préparation) : point de départ et d'arrivée choisis, réglages de balade (caractère, vitesses moyennes, pauses, seuils de météo), trace calculée</td><td>Calculer et afficher la balade demandée. Le calcul est fait sans mémoire : le service ne conserve ni vos positions ni vos tracés</td><td>Exécution du contrat</td></tr>
+<tr><td>Balades enregistrées (titre, réglages, tracé, distance, durée) et lien de partage</td><td>Retrouver, rejouer et, si vous le décidez, partager une balade. Toute personne qui a le lien voit le titre, le tracé, la distance et la durée, jamais votre compte ni vos réglages</td><td>Exécution du contrat</td></tr>
+<tr><td>Abonnés : routes déjà parcourues, déduites de vos trajets GeoRide importés (tracés rattachés au réseau routier)</td><td>Mode « découverte » : proposer des routes que vous n'avez pas encore faites</td><td>Exécution du contrat</td></tr>
+<tr><td>Accord facultatif de partage anonyme de vos trajets (voir la section « Score motard »)</td><td>Contribuer au score « motard » des routes</td><td>Consentement</td></tr>
 <tr><td>Palier, dates, historique des paiements, identifiants du client chez Mollie</td><td>Facturation, suivi de l'abonnement, obligations comptables</td><td>Exécution du contrat, obligation légale</td></tr>
 <tr><td>Journaux techniques (adresse IP, date, requête)</td><td>Sécurité et diagnostic</td><td>Intérêt légitime</td></tr>
 </table></div>
@@ -58,6 +62,7 @@ sont ceux de la session de connexion, strictement nécessaires au service.</p>
 <li>Google Ireland Limited : uniquement si vous choisissez de vous connecter avec Google (voir la section ci-dessous). RuneRide n'envoie aucune donnée à Google, il reçoit seulement les informations de votre compte Google décrites plus bas.</li>
 <li>Mollie B.V. (Pays-Bas) : paiement. Mollie reçoit l'adresse de courriel du client et les données de son moyen de paiement, que RuneRide ne voit pas.</li>
 <li>GeoRide (Kible SAS) : si vous reliez votre compte, RuneRide se connecte à l'API de GeoRide avec vos identifiants au moment de la liaison, puis avec un jeton d'accès, pour récupérer vos propres trajets. RuneRide n'envoie aucune autre donnée à GeoRide.</li>
+<li>Amazon Web Services EMEA SARL, pour le calculateur de balade (en préparation) : exécution du calcul et stockage de la carte routière dans la région de Stockholm (Suède) ; les demandes transitent par le réseau de diffusion CloudFront d'AWS, qui peut les relayer par des serveurs situés hors de l'Union européenne sans les conserver. Le service ne conserve aucune position ni aucun tracé ; ses journaux techniques n'en contiennent pas.</li>
 </ul>
 <h2>Connexion avec Google</h2>
 <p>Vous pouvez créer un compte ou vous connecter avec votre compte Google plutôt qu'avec un mot de passe. Dans ce cas, RuneRide demande à Google uniquement les informations suivantes (périmètres OAuth <code>openid</code> et <code>email</code>) :</p>
@@ -70,6 +75,15 @@ sont ceux de la session de connexion, strictement nécessaires au service.</p>
 <p><strong>Partage.</strong> Les données reçues de Google ne sont ni vendues, ni transférées à des tiers, sauf à nos sous-traitants d'hébergement listés plus haut, nécessaires au fonctionnement du service, ou si la loi l'exige. Aucun humain ne lit ces données, sauf accord de votre part pour une demande d'assistance.</p>
 <p><strong>Conservation et suppression.</strong> Ces données sont conservées tant que votre compte existe et effacées avec lui (voir «&nbsp;Durées de conservation&nbsp;»). Vous pouvez aussi retirer l'accès de RuneRide à tout moment depuis la page <a href="https://myaccount.google.com/permissions" rel="noopener">myaccount.google.com/permissions</a>, ou demander l'effacement de vos données à <a href="mailto:contact@runeride.fr">contact@runeride.fr</a>.</p>
 <p>L'utilisation et le transfert par RuneRide des informations reçues des API Google respectent la <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">politique de Google sur les données utilisateur des services d'API</a>, y compris ses exigences d'utilisation limitée (<em>Limited Use</em>).</p>
+<h2>Score « motard » (partage anonyme, facultatif)</h2>
+<p>Dans la page «&nbsp;Compte&nbsp;», vous pouvez accepter que vos trajets GeoRide contribuent, <strong>de façon anonyme</strong>, au score «&nbsp;motard&nbsp;» des routes (les routes que les motards fréquentent). Cette option est <strong>désactivée par défaut</strong>.</p>
+<ul>
+<li>Les 500 premiers et derniers mètres de chaque trajet (votre domicile, vos lieux habituels) sont retirés avant tout usage.</li>
+<li>Les trajets sont comptés par tronçon de route, <strong>sans conserver de lien entre un tronçon et votre compte</strong>.</li>
+<li>Un score n'est publié pour un département que lorsqu'un nombre minimal de motards y ont contribué (seuil prévu : 5).</li>
+<li>Vous pouvez retirer votre accord à tout moment d'un simple clic dans la page «&nbsp;Compte&nbsp;» : vos trajets ne sont plus pris en compte au recalcul suivant, effectué chaque semaine.</li>
+<li><strong>À ce jour, le calcul de ce score n'est pas en service</strong> : l'option enregistre seulement votre accord et aucun trajet n'est agrégé. Cette politique sera mise à jour avant sa mise en service.</li>
+</ul>
 <h2>Durées de conservation</h2>
 <ul>
 <li>Essai sans abonnement : fichiers supprimés 7 jours après le premier envoi.</li>
@@ -77,6 +91,7 @@ sont ceux de la session de connexion, strictement nécessaires au service.</p>
 <li>Exports : 30 jours. Corbeille : 30 jours.</li>
 <li>Compte supprimé par le client : fichiers, index et compte effacés immédiatement.</li>
 <li>Liaison GeoRide : le jeton est effacé quand vous déliez GeoRide ou supprimez votre compte. Sans synchronisation pendant 30 jours, il expire et le compte doit être relié de nouveau.</li>
+<li>Balades enregistrées : jusqu'à ce que vous les supprimiez ou que vous supprimiez votre compte. Un lien de partage reste valable jusqu'à ce que vous le révoquiez. Routes déjà parcourues : effacées avec vos trajets importés («&nbsp;Supprimer mes trajets&nbsp;») ou avec votre compte.</li>
 <li>Pièces comptables (paiements, reçus) : 10 ans, conformément aux obligations comptables françaises.</li>
 <li>Journaux techniques : 6 mois.</li>
 </ul>
